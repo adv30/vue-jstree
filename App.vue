@@ -182,7 +182,12 @@
 </template>
 
 <script>
+import Test from "./src/test.ts"
     export default {
+        created() {
+            let test = new Test
+            console.log(test.testFun())
+        },
         name: 'app',
         data () {
             return {

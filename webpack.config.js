@@ -2,8 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  //entry: './main.js',
-  entry: './src/index.js',
+  entry: './main.js',
+  // entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     //publicPath: '/dist/',
@@ -33,6 +33,10 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
+
+
+
+
           name: '[name].[ext]'
         }
       },
@@ -45,10 +49,19 @@ module.exports = {
         }, {
           loader: "less-loader" // compiles Less to CSS
         }]
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       }
     ]
   },
   resolve: {
+    extensions: ['.js', '.ts', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
